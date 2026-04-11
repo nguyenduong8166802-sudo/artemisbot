@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Demo",
+    "price": "299K",
+    "desc": "Test trước",
+    "button": "Test ngay"
+  },
+  {
+    "name": "Pro",
+    "price": "999K",
+    "desc": "Dùng chính",
+    "button": "Mua ngay"
+  },
+  {
+    "name": "VIP",
+    "price": "2.5TR",
+    "desc": "Kèm 1-1",
+    "button": "Đăng ký VIP"
+  }
+]

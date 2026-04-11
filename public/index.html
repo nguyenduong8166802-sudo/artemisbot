@@ -1,0 +1,63 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ARTEMIS BOT</title>
+  <style>
+    body{margin:0;font-family:Arial,sans-serif;background:#0b132b;color:#fff}
+    .container{max-width:900px;margin:auto;padding:20px}
+    h1,h2,h3{text-align:center}
+    .section{margin:40px 0}
+    .card{background:#1c2541;padding:15px;margin:10px 0;border-radius:10px}
+    button,a.btn{width:100%;padding:15px;background:gold;border:none;font-weight:bold;margin-top:10px;cursor:pointer;color:#000;text-decoration:none;display:block;text-align:center;box-sizing:border-box}
+    .packages{display:grid;gap:14px}
+    @media (max-width:768px){.container{padding:16px}h1{font-size:28px;line-height:1.3}h2{font-size:22px}}
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="section">
+    <h1>Cài BOT XAUUSD trong 15 phút <span style="color:gold">→ Trade ngay hôm nay</span></h1>
+    <p style="text-align:center">Không cần kinh nghiệm – chỉ cần làm theo hướng dẫn. BOT giúp bạn vào lệnh rõ ràng hơn.</p>
+    <a class="btn" href="#pricing">👉 Đăng ký cài BOT ngay</a>
+  </div>
+
+  <div class="section">
+    <h2>Bạn đang gặp vấn đề?</h2>
+    <div class="card">❌ Không biết điểm vào lệnh</div>
+    <div class="card">❌ Trade theo cảm xúc</div>
+    <div class="card">❌ Dùng nhiều chỉ báo vẫn thua</div>
+    <p style="color:gold;text-align:center">👉 BOT này sinh ra để giải quyết điều đó</p>
+  </div>
+
+  <div class="section" id="pricing">
+    <h2>Chọn gói</h2>
+    <div id="packages" class="packages"></div>
+  </div>
+
+  <div class="section">
+    <h2>Master hỗ trợ</h2>
+    <p style="text-align:center">MR.LONG<br>5+ năm kinh nghiệm<br>1000+ trader</p>
+    <p style="color:gold;text-align:center">👉 Có người đồng hành khi trade</p>
+  </div>
+</div>
+
+<script>
+async function loadPackages(){
+  const res = await fetch('/api/packages');
+  const data = await res.json();
+  document.getElementById('packages').innerHTML = data.map(p => `
+    <div class="card">
+      <h3>${p.name}</h3>
+      <p style="text-align:center;font-size:28px;font-weight:bold;color:gold;margin:8px 0">${p.price}</p>
+      <p style="text-align:center">${p.desc || ""}</p>
+      <a class="btn" href="#pricing">${p.button || "Đăng ký ngay"}</a>
+    </div>
+  `).join('');
+}
+loadPackages();
+</script>
+</body>
+</html>
